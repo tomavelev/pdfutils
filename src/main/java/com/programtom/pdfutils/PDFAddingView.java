@@ -43,7 +43,16 @@ public class PDFAddingView extends JPanel {
 						 path =file.toPath();
 						 
 						 Image img = Image.getInstance(path.toAbsolutePath().toString());
-						 document.add(img);
+						 
+						 int indentation = 0;
+						//whatever
+						Image image = img;
+
+						float scaler = ((document.getPageSize().getWidth() - document.leftMargin()
+						               - document.rightMargin() - indentation) / image.getWidth()) * 100;
+
+						image.scalePercent(scaler);
+						 document.add(image);
 
 						}
 						
